@@ -1,0 +1,32 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  
+  tasks:
+    - name: Sample task one
+      set_fact:
+        a_string: "A string" 
+        a_list: ['first', 'second', 'third'] 
+        a_dict:
+          key1: value1
+          key2: value2
+          key3: value3
+    
+    - name: Output a_string
+      debug:
+        var: a_string
+    
+    - name: Output a message with a_string
+      debug:
+        msg: "This is the contents of: {{ a_string }}"
+
+    - name: Output a list
+      debug:
+        var: item
+      loop: "{{ a_list }}"
+
+    - name: Output a dict
+      debug:
+        msg: "Key is: {{ item.key }}   Value is: {{ item.value }}"
+      loop: "{{ a_dict|dict2items }}"
