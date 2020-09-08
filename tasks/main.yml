@@ -1,6 +1,6 @@
 ---
-- name: Converge
-  hosts: localhost
+- name: AWX Demo
+  hosts: all 
   connection: local
   
   tasks:
